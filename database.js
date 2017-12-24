@@ -3,7 +3,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const model = require('./model');
 const util = require('./util');
-const url = "mongodb://localhost:27017/mydb";
+const url = "mongodb://localhost:27017";
 
 const dbName = "screen_share";
 const collectionName = "account";

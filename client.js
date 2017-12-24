@@ -1,7 +1,7 @@
 var net = require('net');
 
-let account = '';
-let password = '';
+let account = 'dog@gmail.com';
+let password = '12345';
 let name = '';
 
 var client = new net.Socket();

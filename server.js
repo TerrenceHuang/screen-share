@@ -20,11 +20,10 @@ const server = net.createServer((client) => {
             case 'register':
                 if (datas.length == 4)
                     database.createUser(datas[1], datas[2], datas[3], (success) => {
-                        console.log(success);
                         if (success)
-                            client.write('register|T');
+                            client.write('register|T\n');
                         else
-                            client.write('register|F');
+                            client.write('register|F\n');
                     });
                 else
                     sendWrongAttributeMessage(client);
@@ -33,9 +32,9 @@ const server = net.createServer((client) => {
                 if (datas.length == 3)
                     database.login(datas[1], datas[2], (success) => {
                         if (success)
-                            client.write('login|T');
+                            client.write('login|T\n');
                         else
-                            client.write('login|F');
+                            client.write('login|F\n');
                     });
                 else
                     sendWrongAttributeMessage(client);
@@ -50,7 +49,8 @@ const server = net.createServer((client) => {
 
 // send wrong message and disconnect
 function sendWrongAttributeMessage(socket) {
-    socket.write('error|wrong attribute');
+    console.log('Client wrong attribute and disconnect');
+    socket.write('error|wrong attribute\n');
     socket.destroy();
 }
 
