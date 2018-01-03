@@ -13,7 +13,26 @@ client.connect(8000, '127.0.0.1', function() {
 
 client.on('data', function(data) {
     console.log('Received: ' + data);
-    client.destroy();
+    switch ('' + data) {
+        case 'login|T\n':
+            connectSend();
+            break;
+        case 'connectRecv|dog@gmail.com\n':
+            client.write('connectRecv|T');
+            break;
+        case 'connectRecv|terrence@gmail.com\n':
+            client.write('connectRecv|T');
+            break;
+        case 'connectResult|T\n':
+            client.write('pictureSend|picture\n');
+            break;
+        case 'pictureSend|T\n':
+            break;
+        default:
+
+            break;
+    }
+    // client.destroy();
 });
 
 client.on('close', function() {
@@ -30,4 +49,9 @@ function register() {
 
 function login() {
 	client.write('login|' + account + '|' + password);
+}
+
+function connectSend() {
+    client.write('connectSend|terrence@gmail.com');
+    console.log('in');
 }

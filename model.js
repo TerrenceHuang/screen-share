@@ -14,3 +14,11 @@ exports.login = {
     account: '',
     password: ''
 };
+
+exports.myConnection = {
+    socket: {},
+    login: false,
+    account: '',
+    connection: false,
+    connectAccount: ''
+}

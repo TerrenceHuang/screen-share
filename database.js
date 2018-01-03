@@ -69,3 +69,28 @@ exports.login = (account, password, loginCallback) => {
         });
     });
 };
+
+exports.checkExistence = (account, checkExistenceCallback) => {
+    MongoClient.connect(url, (err, db) => {
+        if (err) throw err;
+
+        let dbase = db.db(dbName);
+        let query = util.cloneObject(model.account);
+        query.account = account;
+
+        dbase.collection(collectionName).find(query).toArray((err, result) => {
+            if (err) throw err;
+
+            if (result.length == 1) {
+                // ok
+                console.log('Exist: ' + account);
+                checkExistenceCallback(true);
+            } else {
+                // wrong
+                console.log('Doesn\'t exist: ' + account);
+                checkExistenceCallback(false);
+            }
+            db.close();
+        });
+    });
+}
