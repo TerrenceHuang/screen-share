@@ -20,5 +20,7 @@ exports.myConnection = {
     login: false,
     account: '',
     connection: false,
-    connectAccount: ''
+    connectAccount: '',
+    pictureSize: 0,
+    buffer: ''
 }

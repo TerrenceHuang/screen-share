@@ -1,14 +1,14 @@
 var net = require('net');
 
-let account = 'dog@gmail.com';
-let password = '12345';
+let account = 'b';
+let password = 'b';
 let name = '';
 
 var client = new net.Socket();
 client.connect(8000, '127.0.0.1', function() {
     console.log('Connected');
     // register();
-    login();
+    //login();
 });
 
 client.on('data', function(data) {
@@ -49,9 +49,13 @@ function register() {
 
 function login() {
 	client.write('login|' + account + '|' + password);
-}
+};
 
 function connectSend() {
     client.write('connectSend|terrence@gmail.com');
     console.log('in');
-}
+};
+
+let string = "hihihi";
+console.log(string.substring(0, 3));
+console.log(string);
